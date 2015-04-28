@@ -1,0 +1,11 @@
+{
+    "name": "Manicuria-Elia",
+    "version": "0.1.0",
+    "dependencies": {
+        "express": "~4.12.3",
+        "socket.io": "~1.3.5",
+        "cookie-session": "~1.1.0"
+    },
+    "author": "jeanqu",
+    "description": "Una aplicacion para gestionar una manicuria"
+}
