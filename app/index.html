@@ -25,7 +25,12 @@
         </div>
 
         <div ng-show="vueCourante == 'vueFormulaire'">
-            Pagina de formulario
+            <div>Pagina de formulario<div>
+            <div class="go_to_administration" ng-submit='sendMessage()'>
+                <form method="post" action="/indexAdministration.html">
+                   <p><input type="text" name="pseudo" /></p>
+                </form>
+            </div>
         </div>
 
         <script type="text/javascript" src="lib/tinymce/tinymce.min.js"></script>
@@ -33,7 +38,10 @@
         <script type="text/javascript" src="lib/angular-1.2.16/angular-sanitize.min.js"></script>
         <script type="text/javascript" src="lib/angular-1.2.16/i18n/angular-locale_fr-fr.js"></script>
         <script type="text/javascript" src="lib/ui-tinymce.js"></script>
-        <script type="text/javascript" src="js/client.js"></script>    
-    
+        <script type="text/javascript" src="js/client.js"></script>  
+        <script src="/socket.io/socket.io.js"></script>  
+        <script>
+            var socket = io.connect('http://localhost:8080');
+        </script>
     </body>
 </html>
