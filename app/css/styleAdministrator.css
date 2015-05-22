@@ -1,0 +1,7 @@
+.button_deconnexion{
+	cursor: pointer;
+	margin-right: 10%;
+	border: solid;
+	width: 20%;
+	background-color: red;
+}
