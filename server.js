@@ -5,6 +5,8 @@ var session = require('client-sessions');
 var static = require('node-static');
 var file = new static.Server(__dirname + '/app');
 
+var modelos = require(__dirname + '/SQL/conexion.js')
+
 var path = require("path");
 var url = require("url");
 
@@ -20,22 +22,29 @@ app.use(session({
 }));
 
 app.post('/tryLoggin', function(req, res){
-  console.log('En el servidor: ' + req.body.VarIntentaConnexiones.loggin);
-  if (req.body.VarIntentaConnexiones.loggin === 'login')
-    {
-      req.mySession.isConnected = true;
-      console.log('resultat:' + req.mySession.isConnected);
-      goodInformations = 'true';
+  //
+  var _user = req.body.VarIntentaConnexiones.loggin
+
+  modelos.Administrador.findOne({
+    where : {
+      user : _user
     }
-    else
-    {
+  }).then(function(Administrador) {
+    if (Administrador == null){
       req.mySession.isConnected = false;
-      console.log('resultat:' + req.mySession.isConnected);
+      console.log('resultado:' + req.mySession.isConnected);
       goodInformations = 'false';
     }
-    res.send({ succes: true, goodInformations: goodInformations });
+    else {
+      req.mySession.isConnected = true;
+      console.log('resultado:' + req.mySession.isConnected);
+      goodInformations = 'true';
+    }
+  res.send({ succes: true, goodInformations: goodInformations });
 });
+    
 
+});
 app.post('/deconnectLoggin', function(req, res){
   console.log('en la funccion deconnexia');
   req.mySession.isConnected = false;
