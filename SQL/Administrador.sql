@@ -2,14 +2,15 @@
 
 -- DROP TABLE "Administrador";
 
-CREATE TABLE "Administrador"
-(
-  "user" character(50) NOT NULL,
-  password character(50),
-  CONSTRAINT pk_admin PRIMARY KEY ("user")
-)
-WITH (
+CREATE TABLE Administrador
+( 
+  id_admin SERIAL PRIMARY KEY,
+  loggin CHAR(50) NOT NULL,
+  password CHAR(50)
+);
+
+/*WITH (
   OIDS=FALSE
 );
 ALTER TABLE "Administrador"
-  OWNER TO postgres;
+  OWNER TO postgres;*/

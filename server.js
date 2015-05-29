@@ -5,7 +5,7 @@ var session = require('client-sessions');
 var static = require('node-static');
 var file = new static.Server(__dirname + '/app');
 
-var modelos = require(__dirname + '/SQL/conexion.js')
+//var modelos = require(__dirname + '/SQL/conexion.js')
 
 var path = require("path");
 var url = require("url");
@@ -20,31 +20,13 @@ app.use(session({
   duration: 30 * 60 * 1000,
   activeDuration: 5 * 60 * 1000,
 }));
+var pg = require('pg');
+var conString = "postgres://postgres:12345@localhost/eliana";
 
-app.post('/tryLoggin', function(req, res){
-  //
-  var _user = req.body.VarIntentaConnexiones.loggin
+var connectAdmin = require(__dirname + '/connectAdmin.js');
 
-  modelos.Administrador.findOne({
-    where : {
-      user : _user
-    }
-  }).then(function(Administrador) {
-    if (Administrador == null){
-      req.mySession.isConnected = false;
-      console.log('resultado:' + req.mySession.isConnected);
-      goodInformations = 'false';
-    }
-    else {
-      req.mySession.isConnected = true;
-      console.log('resultado:' + req.mySession.isConnected);
-      goodInformations = 'true';
-    }
-  res.send({ succes: true, goodInformations: goodInformations });
-});
-    
+app.post('/tryLoggin', connectAdmin.checkIdentityAdministrador);
 
-});
 app.post('/deconnectLoggin', function(req, res){
   console.log('en la funccion deconnexia');
   req.mySession.isConnected = false;

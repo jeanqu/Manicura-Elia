@@ -26,13 +26,13 @@ angular.module("ManElia", [ "ngSanitize", "ui.tinymce" ])
 		$http.post('/tryLoggin', {VarIntentaConnexiones: VarIntentaConnexiones}).
 		  success(function(data, status, headers, config) {
 		  	$scope.resultTryConnexion = data.goodInformations;
-		  	if ($scope.resultTryConnexion == 'true')
+		  	if ($scope.resultTryConnexion == true)
 		  	{
 		  		window.location.href = '/indexAdministration.html';
 		  	}
 		  }).
 		  error(function(data, status, headers, config) {
-		    $scope.resultTryConnexion = 'false';
+		    $scope.resultTryConnexion = false;
 		  });
 	}
 

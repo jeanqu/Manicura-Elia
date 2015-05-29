@@ -1,7 +1,7 @@
 
 var Sequelize = require('sequelize')
 
-var sequelize = new Sequelize ('Eliana', 'postgres', '123456', { // 'NOMBRE DE LA BASE DE DATOS', 'NOMBRE DEL USUARIO' 'PASSWORD'
+var sequelize = new Sequelize ('eliana', 'postgres', { // 'NOMBRE DE LA BASE DE DATOS', 'NOMBRE DEL USUARIO' 'PASSWORD'
 	host: 'localhost',
 	port: 5432,
 	dialect: "postgres",
