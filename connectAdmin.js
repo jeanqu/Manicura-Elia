@@ -1,7 +1,3 @@
-//var model = require(__dirname + '/model.js');
-var pg = require('pg');
-var conString = "postgres://postgres:12345@localhost/eliana";
-
 exports.checkIdentityAdministrador = function(req, res) {
 
   var results = [];
