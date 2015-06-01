@@ -4,7 +4,6 @@ var cookieParser = require('cookie-parser');
 var session = require('client-sessions');
 var static = require('node-static');
 var file = new static.Server(__dirname + '/app');
-var pg = require('pg');
 
 //var modelos = require(__dirname + '/SQL/conexion.js')
 
@@ -21,11 +20,13 @@ app.use(session({
   duration: 30 * 60 * 1000,
   activeDuration: 5 * 60 * 1000,
 }));
-var conString = "postgres://postgres:12345@localhost/eliana";
 
-var connectAdmin = require(__dirname + '/connectAdmin.js');
+var connectAdmin = require(__dirname + '/controleur/connectAdmin.js');
+var reservaciaControleur = require(__dirname + '/controleur/reservaciaControleur');
 
 app.post('/tryLoggin', connectAdmin.checkIdentityAdministrador);
+
+app.post('/getCartas', reservaciaControleur.getCarta);
 
 app.post('/deconnectLoggin', function(req, res){
   console.log('en la funccion deconnexia');

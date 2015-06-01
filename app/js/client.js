@@ -1,8 +1,10 @@
-angular.module("ManElia", [ "ngSanitize", "ui.tinymce" ])
-.controller("ManEliaCtrl", function($scope, $location, $http) {
+angular.module("ManElia", [ "ngSanitize", "ui.tinymce", "serviceClient" ])
+.controller("ManEliaCtrl", function($scope, $location, $http, ClientServices) {
 
 	$scope.vueCourante = 'vueIntroduction';
 	$scope.resultTryConnexion = 'none';
+
+	$scope.Carta = [];
 
 	$scope.$watch(function() {
 		return $location.path();
@@ -32,24 +34,24 @@ angular.module("ManElia", [ "ngSanitize", "ui.tinymce" ])
 		  	}
 		  }).
 		  error(function(data, status, headers, config) {
-		    $scope.resultTryConnexion = false;
+		  	$scope.resultTryConnexion = false;
 		  });
 	}
 
-	/*
-	socket.on('TryLogginResponse', function (data) {
-	    console.log('en la funcion');
-	    $scope.$apply(function(){
-		    if (data.goodInformations == 'true')
-		    {
-		    	$scope.resultTryConnexion = 'true';
-		  		window.location.href = '/indexAdministration.html';
-		  	}
-		    else
-		    {
-				console.log('faux');
-		    	$scope.resultTryConnexion = 'false';
-		    }
-	    });
-	  });*/
+	$scope.sendReservacia = function(varInformacionesFormulario){
+		alert('Validacion formulario');
+	}
+
+	$scope.descargarInformacionesBasica = function(){
+		$http.post('/getCartas').
+		  success(function(data, status, headers, config) {
+		  	$scope.Carta =  data.Carta;
+		  }).
+		  error(function(data, status, headers, config) {
+		    $scope.Carta = [];
+		  })
+			
+	}
+	$scope.descargarInformacionesBasica();
+
 });

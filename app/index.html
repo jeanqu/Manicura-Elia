@@ -25,21 +25,29 @@
         </div>
 
         <div ng-show="vueCourante == 'vueFormulaire'">
-            <div>Pagina de formulario<div>
+            <div>Pagina de formulario</div>
             <div class="go_to_administration">
                 <form novalidate class="formular_conection" ng-submit='intentaConnexion(VarIntentaConnexiones)'>
                    <p><input type="text" name="pseudo" ng-model="VarIntentaConnexiones.loggin"/></p>
                 </form>
+                <div>{{resultTryConnexion}}</div>
             </div>
-            <pre>form = {{VarIntentaConnexiones | json}}</pre>
-            {{resultTryConnexion}}
-            <div ng-show="resultTryConnexion == 'true'">
-                Good connexion
-            </div>
-            <div ng-show="resultTryConnexion == 'false'">
-                Wrong connexion
+            
+            <div class="contenidor_formulare_reservacia">
+                <form novalide class="formular_reservacia" ng-submit='sendReservacia(varInformacionesFormulario)'>
+                     <p>
+                       <label for="seleccion_carta">Que tipo de servicio quieres?</label><br />
+                       <select name="seleccion_carta">
+                           <option ng-repeat="tipo_servicio in Carta" value="tipo_servicio.id_carta">
+                               {{tipo_servicio.nombre_carta}} | precio : {{tipo_servicio.precio}} | {{tipo_servicio.numero_de_sesiones}} sesiones
+                           </option>
+                       </select>
+                   </p>
+                </form>
             </div>
         </div>
+
+
 
         <script type="text/javascript" src="lib/tinymce/tinymce.min.js"></script>
         <script type="text/javascript" src="lib/angular-1.2.16/angular.js"></script>
@@ -47,5 +55,6 @@
         <script type="text/javascript" src="lib/angular-1.2.16/i18n/angular-locale_fr-fr.js"></script>
         <script type="text/javascript" src="lib/ui-tinymce.js"></script>
         <script type="text/javascript" src="js/client.js"></script>  
+        <script type="text/javascript" src="js/serviceClient.js"></script>  
     </body>
 </html>

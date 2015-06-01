@@ -2,9 +2,6 @@ var pg = require('pg');
 var conString = "postgres://postgres:12345@localhost/eliana";
 
 exports.checkIdentityAdministrador = function(req, res) {
-
-  var results = [];
-
   var client = new pg.Client(conString);
   client.connect();
   
@@ -36,22 +33,4 @@ exports.checkIdentityAdministrador = function(req, res) {
     console.log('En el controler: ' + contaNombreAdminConLoggin);
     res.send({ succes: true, goodInformations: goodInformations }); 
   });
-
-/*	var nbAdmin = model.contaNombreAdminConLoggin(req.body.VarIntentaConnexiones.loggin);
-  console.log('nbAdmin is ' + nbAdmin);
-    if(nbAdmin > 0)
-    {
-      req.mySession.isConnected = true;
-      goodInformations = true;
-    }
-    else
-    {
-      req.mySession.isConnected = false;
-      goodInformations = false;
-    } 
-    setTimeout(function() 
-    {
-      console.log('En el controler: ' + nbAdmin);
-      res.send({ succes: true, goodInformations: goodInformations }); 
-    }, 100);  */
 }
