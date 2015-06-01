@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var session = require('client-sessions');
 var static = require('node-static');
 var file = new static.Server(__dirname + '/app');
+var pg = require('pg');
 
 //var modelos = require(__dirname + '/SQL/conexion.js')
 
@@ -20,7 +21,6 @@ app.use(session({
   duration: 30 * 60 * 1000,
   activeDuration: 5 * 60 * 1000,
 }));
-var pg = require('pg');
 var conString = "postgres://postgres:12345@localhost/eliana";
 
 var connectAdmin = require(__dirname + '/connectAdmin.js');
