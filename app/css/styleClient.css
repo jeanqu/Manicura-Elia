@@ -1,5 +1,5 @@
 .imagen_introduccion{
-	background-image: url("/image/image_couverture1.jpg");
+	background-image: url("/image/image_couverture2.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	height: 400px;
@@ -14,3 +14,58 @@
 	float: right;
 	width: 20%;
 }
+.calendario{
+	margin: auto;
+	width: 60%;
+	height: 500px;
+	border: solid;
+	position: relative;
+}
+.calendario .mesa_reservacia_fix {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.calendario .mesa_reservacia_fix .horario, .calendario .mesa_reservacia .horario_null{
+	display: inline-block;
+	width: 62px;
+	height: 360px;
+}
+.calendario .mesa_reservacia_fix .horario td, .calendario .mesa_reservacia .horario_null td{
+	display: block;
+	height: 22px;
+}
+.calendario .mesa_reservacia_fix .un_dia_fix, .calendario .mesa_reservacia .un_dia{
+	display: inline-block;
+	width: 70px;
+	height:360px;
+	margin: 10px;
+	margin-top: 22px;
+	border: solid;
+	border-width: 2px;
+}
+.calendario .mesa_reservacia_fix .un_dia_fix .cuadrado_una_hora{
+	display: block;
+	border: solid;
+	border-width: 1px;
+	height: 20px;
+	width: 68px;
+}
+.calendario .mesa_reservacia .un_dia .cuadrado_una_division{
+	display: block;
+	padding: 0px;
+	height: 6px;
+	//background-color: blue;
+}
+.calendario .mesa_reservacia .un_dia .cuadrado_una_division [data-estado='0']{
+
+}
+.calendario .mesa_reservacia .un_dia .cuadrado_una_division [data-estado='3']{
+	background-color: green;
+	width: 100%;
+  	height: 100%;
+}
+.calendario .mesa_reservacia {
+	width: 100%;
+}
+

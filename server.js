@@ -27,6 +27,7 @@ var reservaciaControleur = require(__dirname + '/controleur/reservaciaControleur
 app.post('/tryLoggin', connectAdmin.checkIdentityAdministrador);
 
 app.post('/getCartas', reservaciaControleur.getCarta);
+app.post('/getReservaciones', reservaciaControleur.getReservaciones);
 
 app.post('/deconnectLoggin', function(req, res){
   console.log('en la funccion deconnexia');
@@ -36,19 +37,15 @@ app.post('/deconnectLoggin', function(req, res){
 
 
 app.get('/indexAdministration.html', function(req, res){
-  console.log('Dans la fonction, la valeur est:' + req.mySession.isConnected);
   if (req.mySession.isConnected == true)
   {
-    console.log('dans admin');
     //res.file.serve('/indexAdministration.html', 301, {}, req, res);
     res.sendfile('app/indexAdministration.html');
   }
   else
   {
-    console.log('pas dans admin');
     //res.file.serve('/index.html', 301, {}, req, res);
     res.sendfile('app/index.html');
-    console.log('servis!');
   }
 });
 

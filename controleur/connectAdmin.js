@@ -34,3 +34,4 @@ exports.checkIdentityAdministrador = function(req, res) {
     res.send({ succes: true, goodInformations: goodInformations }); 
   });
 }
+

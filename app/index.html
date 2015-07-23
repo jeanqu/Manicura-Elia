@@ -35,13 +35,41 @@
             
             <div class="contenidor_formulare_reservacia">
                 <form novalide class="formular_reservacia" ng-submit='sendReservacia(varInformacionesFormulario)'>
-                     <p>
+                    <p>
                        <label for="seleccion_carta">Que tipo de servicio quieres?</label><br />
-                       <select name="seleccion_carta">
-                           <option ng-repeat="tipo_servicio in Carta" value="tipo_servicio.id_carta">
+                       <select name="seleccion_carta" ng-model="VarReservacia">
+                           <option ng-repeat="tipo_servicio in Carta" value={{tipo_servicio}}>
                                {{tipo_servicio.nombre_carta}} | precio : {{tipo_servicio.precio}} | {{tipo_servicio.numero_de_sesiones}} sesiones
                            </option>
                        </select>
+                   </p>
+                   <p>
+                       {{VarReservacia}}
+                   </p>
+                   <p>
+                        <div class="calendario">
+                           <!-- <table class="mesa_reservacia_fix">
+                                <tr class="horario">
+                                    <td ng-repeat="n in [] | range: 7 : 21">
+                                        {{n}}
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="dia in semanas[0].dias" class="un_dia_fix"> 
+                                    <td ng-repeat="n in [] | range: 7 : 21" class="cuadrado_una_hora">
+                                    </td>
+                                </tr>
+                            </table> -->
+                            <table class="mesa_reservacia">
+                                <tr class="horario_null">
+                                </tr>
+                                <tr ng-repeat="dia in semanas[0]" class="un_dia"> 
+                                    <td ng-repeat="horarioUnitad in dia" class="cuadrado_una_division">
+                                        <div data-diaId={{horarioUnitad.diaid}} data-horarioId={{horarioUnitad.id}} data-estado={{horarioUnitad.estado}} ng-mouseover="cambiarValorHorarioEvaluado(horarioUnitad.diaid, horarioUnitad.id)">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                    </p>
                 </form>
             </div>
@@ -56,5 +84,6 @@
         <script type="text/javascript" src="lib/ui-tinymce.js"></script>
         <script type="text/javascript" src="js/client.js"></script>  
         <script type="text/javascript" src="js/serviceClient.js"></script>  
+        <script type="text/javascript" src="js/misFiltros.js"></script>  
     </body>
 </html>

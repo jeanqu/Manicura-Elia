@@ -10,7 +10,8 @@
     "express-session": "~1.11.2",
     "node-static": "~0.7.6",
     "pg": "~4.3.0",
-    "sessionstore": "~1.0.6"
+    "sessionstore": "~1.0.6",
+    "json-serialize": "~1.1.2"
   },
   "author": "jeanqu",
   "description": "Una aplicacion para gestionar una manicuria"

@@ -15,13 +15,16 @@ CREATE TABLE Cliente
 	RUT CHAR(15)
 );
 
+-- DROP TABLE Comprada;
 CREATE TABLE Comprada
 (
 	id_comprada SERIAL PRIMARY KEY,
 	numero_sesiones_quedada INT NOT NULL,
 	comprada_fk_comprada_Estado INT,
 	comprada_fk_carta INT,
-	comprafa_fk_cliente INT
+	comprafa_fk_cliente INT,
+	date_reservacia timestamp,
+	date_pagado timestamp
 );
 
 CREATE TABLE Comprada_Estado
